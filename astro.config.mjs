@@ -4,6 +4,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://yuki-meguro.github.io/site/',
+  site: 'https://yuki-meguro.github.io/',
+  base: "https://github.com/yuki-meguro/site",
   integrations: [tailwind(), preact()]
 });
