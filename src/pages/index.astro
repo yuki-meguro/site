@@ -2,6 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
+import TimeLineElement from "../components/TimeLine.astro"
+import GithubCard from "../components/GithubCard.astro"
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -13,65 +15,155 @@ const last_posts = posts.slice(0, 3);
 <BaseLayout>
 
     <div class="pb-12 mt-5">
-      <div class="text-xl py-1">Hey there 👋</div>
-      <div class="text-5xl font-bold">I'm Manuel Ernesto</div>
-      <div class="text-3xl py-3 font-bold">Software Engineer and Entrepreneur</div>
+      <div class="title-text-color text-xl py-1">Hey there 👋</div>
+      <div class="title-text-color text-5xl font-bold">I'm Yuki Meguro</div>
+      <div class="title-text-color text-3xl py-3 font-bold">Robotics System Engineer</div>
       <div class="py-2">
-        <text class="text-lg">
-          I made this template for everyone who needs to create a personal website easily and quickly. This template includes Project Section, CV Section, Store, Paginated Blog, RSS Feed, SEO Friendly, Responsive Desing and 29 Visual themes. I hope you find it useful!
-          </text
-        >
+        <text class="sub-text-color text-lg">
+          ロボットシステムエンジニアとして従事する傍ら、Githubに成果物を公開したりしています。FANUCロボット開発言語である KAREL を扱うことが多いです。Python や C#、Javascript が好きです。最近は静的サイトジェネレータ Astro にハマっています。
+        </text>
       </div>
       <div class="mt-8">
-        <a class="btn" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
-        <a href="https://github.com/manuelernestog/astro-modern-personal-website" target="_blank" class="btn btn-outline ml-5"> Get This template</a>
+        <a class="btn" href="https://yuki-meguro.com/" target="_blank"> View Blog</a>
+        <a href="https://github.com/yuki-meguro" target="_blank" class="btn btn-outline ml-5"> View Github</a>
       </div>
     </div>
 
     <div>
-      <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
+      <div class="text-3xl w-full font-bold mb-4 title-text-color">Projects</div>
     </div>
+    <ul class="grid gap-fluid-4 gap-3 sm:grid-cols-2 mb-8">
+      <GithubCard
+        title="site"
+        url="https://github.com/yuki-meguro/site"
+        desc="当サイトです"
+        lang="Astro"
+      />
+      <GithubCard
+        title="MyBlog"
+        url="https://yuki-meguro.com/"
+        desc="ブログサイトをAstroで作成しました。オープンソースでの公開は行っておりません。"
+        lang="Astro"
+      />
+      <GithubCard
+        title="RoboTools"
+        url="https://robotools-web.com/jpn/introduction/"
+        desc="FANUCロボット用のバックアップツールです。GUI操作で簡単にロボットのデータ操作を行うことができます。"
+        lang="C#"
+      />
+      <GithubCard
+        title="Fanuc-point-save"
+        url="https://github.com/yuki-meguro/Fanuc-point-save"
+        desc="FANUCロボット用の原点復帰補助プログラムです。"
+        lang="KAREL"
+      />
+    </ul>
 
-    <HorizontalCard
-      title="Demo Project 1"
-      img="/post_img.webp"
-      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      url="#"
-      badge="NEW"
-    />
-    <div class="divider my-0"></div>
-    <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-    <div class="divider my-0"></div>
-    <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
-
+    <div class="mb-5">
+      <div class="text-3xl w-full font-bold text-gray-200">Experience
+      </div>
+    </div>
+  
+    <div class="time-line-container grid gap-4 mb-10">
+      <TimeLineElement
+        title="WEB系エンジニア"
+        subtitle="2018年〜"
+        desc="WEB構想や要件定義、基本設計に携わる。"
+      />
+      <TimeLineElement
+      title="退職"
+      subtitle="〜2019年"
+      />
+    </div>
+    <div class="time-line-container grid gap-4 mb-10">
+      <TimeLineElement
+        title="ロボットシステムエンジニア"
+        subtitle="2019年〜2020年"
+        desc="関東圏のロボット及び装置メーカーへ入社。主に製造業向けのロボットシステム立ち上げに携わる。"
+      />
+      <TimeLineElement
+      subtitle="2020年〜2021年"
+      desc="年間を通して国内大手ゼネコン向け開発案件に携わる。"
+      />
+      <TimeLineElement
+      subtitle="2021年〜"
+      desc="組み立てラインや検査ラインなど多様なシステムの立ち上げに携わる。"
+      />
+      <TimeLineElement
+        subtitle="〜2022年3月"
+        desc="一身上の都合により同社退職。"
+      />
+      <TimeLineElement
+        title="転職"
+        subtitle="2022年3月〜"
+        desc="都内の同業他社へ転職。"
+      />
+      <div class="flex">
+        <div class="education__time">
+          <span class="education__line bg-indigo-500 block h-full w-[2px] translate-x-[7px]"></span>
+        </div>
+      </div>
+    </div>
 
     <div>
-      <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
+      <div class="text-3xl w-full font-bold mb-4 title-text-color">Skills</div>
     </div>
 
-    {
-      last_posts.map((post) => (
-        <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/blog/" + post.slug}
-          target="_self"
-          badge={post.data.badge}
-        />
-        <div class="divider my-0"></div>
-      ))
-    }
+    <div class="overflow-x-auto mb-4">
+      <table class="table table-zebra w-full text-center">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th>Language</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>FANUC KAREL</td>
+            <td><progress class="progress progress-success w-56" value="95" max="100"></progress></td>
+          </tr>
+          <tr>
+            <td>FANUC TP</td>
+            <td><progress class="progress progress-success w-56" value="95" max="100"></progress></td>
+          </tr>          
+          <tr>
+            <td>DENSO Pacscript</td>
+            <td><progress class="progress progress-success w-56" value="85" max="100"></progress></td>
+          </tr>
+          <tr>
+            <td>HTML・CSS</td>
+            <td><progress class="progress progress-success w-56" value="80" max="100"></progress></td>
+          </tr>
 
+          <tr>
+            <td>PLC</td>
+            <td><progress class="progress progress-warning w-56" value="75" max="100"></progress></td>
+          </tr>
+          <tr>
+            <td>python</td>
+            <td><progress class="progress progress-warning w-56" value="65" max="100"></progress></td>
+          </tr>
+          <tr>
+            <td>javascript</td>
+            <td><progress class="progress progress-primary w-56" value="55" max="100"></progress></td>
+          </tr>
+          <tr>
+            <td>C#</td>
+            <td><progress class="progress progress-primary w-56" value="50" max="100"></progress></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
 </BaseLayout>
+
+<style>
+  .title-text-color {
+    @apply text-gray-200
+  }
+  .sub-text-color {
+    @apply text-gray-300
+  }
+
+</style>
