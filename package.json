@@ -20,7 +20,7 @@
   "devDependencies": {
     "@astrojs/preact": "^2.1.0",
     "@tailwindcss/typography": "^0.5.9",
-    "lucide-preact": "^0.144.0",
+    "lucide-preact": "^0.162.0",
     "preact": "^10.13.2"
   }
 }
